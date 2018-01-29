@@ -1,0 +1,22 @@
+  
+<div class="row" *ngIf="!showdetailproject">
+
+
+  <div class="col-md-4" *ngFor="let pro of projectslist" >
+
+ 
+
+    <single-Project [project]= pro (click)="showdetailProjectActivator(pro)" ></single-Project>
+   
+       
+    </div>
+
+</div>
+
+<div> 
+
+<ProjectDetailsInformationComponent *ngIf="showdetailproject" [project]="DetailprojectInstance" (TranferFundsTrigger)="TranferFunds($event)"></ProjectDetailsInformationComponent>
+</div>
+<button (click)="reload()">Reload</button>
+<web3component></web3component>
+{{secondsDisplay}}

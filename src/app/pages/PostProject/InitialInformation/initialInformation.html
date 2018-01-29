@@ -1,0 +1,46 @@
+<div class="row ">
+  <div class="col-md-6 offset-md-3">
+   {{Catagory.value | json }}
+   {{Loucation.value | json}}
+   {{Title.value | json}}
+    <nb-card>
+    <nb-card-header>Get started</nb-card-header>
+    <nb-card-body>
+      <form (ngSubmit)="onSubmit(formdata)" #formdata="ngForm">
+        <div class="form-group">
+          <label>Choose a category</label>
+           <div class="form-group">
+              <select class="form-control" #selectCategory  [formControl]="Catagory">
+                <option>Technology</option>
+                <option>Nature</option>
+                <option>Life</option>
+                <option>Electronics</option>
+                
+              </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Give your project a title</label>
+          <input type="text" class="form-control" id="projecttitle" placeholder="Title" [formControl]="Title" >
+          
+        </div>
+        <div class="form-group">
+          <label>Your Location</label>
+           <div class="form-group">
+              <select class="form-control" [formControl]="Loucation" >
+                <option [selected]="true">Pakistan</option>
+                <option>America</option>
+                <option>South Africa</option>
+                <option>India</option>
+                <option>France</option>
+              </select>
+          </div>
+        </div>
+     
+       
+        <button type="submit" class="btn btn-danger offset-md-4" >Submit</button>
+      </form>
+    </nb-card-body>
+    </nb-card>
+  </div>
+</div>

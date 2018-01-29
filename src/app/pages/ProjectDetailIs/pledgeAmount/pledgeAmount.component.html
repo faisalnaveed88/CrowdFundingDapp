@@ -1,0 +1,55 @@
+<div class="col-md-12">
+  <nb-card size="large">
+    <nb-card-header class="text-center">Make a pledge Eth {{reward.PledgeAmount}}</nb-card-header>
+    <nb-card-body>
+      <div class="text-center"> {{reward.Title}}</div>
+      <div class="row text-center">
+        <div class="col-md-4">
+
+          <strong> Description </strong>{{reward.Description}}
+        </div>
+        <div class="col-md-4">
+          <strong> Estimated Dilivery </strong>{{reward.EstimatedDilivery}}
+
+        </div>
+      </div>
+      <br>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <strong> ShippingDetails </strong>{{reward.ShippingDetails}}
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <label>Your Account</label>
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control" id="projecttitle" placeholder="address" [(ngModel)]="address">
+        </div>
+      </div>
+      <br>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <label>Plege Amount</label>
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control" id="projecttitle" placeholder="amount" value="{{reward.PledgeAmount}}" [(ngModel)]="reward.PledgeAmount">
+        </div>
+      </div>
+      <br>
+      <div class="row text-center">
+
+        <button type="submit" (click)="TranferFunds()" class="btn btn-danger offset-md-4">Transfer Funds</button>
+
+      </div>
+
+
+
+    </nb-card-body>
+
+
+  </nb-card>
+</div>
+

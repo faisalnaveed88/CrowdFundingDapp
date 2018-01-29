@@ -1,0 +1,91 @@
+<div class="row" (click)="fun()">
+  <img [src]="project.ImageUrl" class="img-fluid" alt="Responsive image" style="width:100%;height:50%">
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        <div class="font-row font-secondary">
+          <div style="text-align:center">
+            <div class="header">
+              <div class="name bold text-success">{{project.Title}}</div>
+              <p>
+                {{project.ShortDescription}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>
+        <h2>What is this product</h2>
+      </nb-card-header>
+      <nb-card-body>
+        <video class="library " controls preload="auto" data-config="some-js-object-here" id="myvedioplayer">
+          <source [src]="project.ProjectStory.VedioUrl" type='video/MP4'>
+        </video>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<nb-card>
+  <nb-card-header>
+    <h2>Project Details</h2>
+  </nb-card-header>
+  <nb-card-body>
+
+
+    {{project.ProjectStory.Description}}
+
+
+  </nb-card-body>
+</nb-card>
+<nb-card>
+  <nb-card-header>
+    <h2>Risk And Challanges</h2>
+  </nb-card-header>
+  <nb-card-body>
+
+
+    {{project.ProjectStory.RiskAndChallanges}}
+
+
+
+  </nb-card-body>
+</nb-card>
+
+<nb-card>
+  <nb-card-header>
+    <h2>Funding Duration</h2>
+  </nb-card-header>
+  <nb-card-body>
+
+    {{project.FundingDuration}}
+
+
+
+  </nb-card-body>
+</nb-card>
+<div class="row-md-10">
+  <div *ngFor="let reward of project.RewardList">
+    <div *ngIf="!showplegeAmount">
+      <ProjectReward [reward]=reward (click)="SelectReward(reward)"></ProjectReward>
+    </div>
+  </div>
+</div>
+<div *ngIf="showplegeAmount" class="row-md-10">
+  <pledgeAmount [reward]=plegeReward (TranferFundsTrigger)="TranferFunds($event)"></pledgeAmount>
+</div>

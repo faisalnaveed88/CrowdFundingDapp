@@ -1,0 +1,53 @@
+
+<nb-card size="large">
+  <nb-card-body>
+    
+    <div class="picture" size="small" style.background-image="url('{{project.ImageUrl}}')"></div>
+
+    <div class="details">
+      <div class="title">
+        {{project.Title}}
+      </div>
+      <div class="description" >
+        {{project.ShortDescription}}
+        
+      </div>
+      <br>
+      <nb-user [name]="project.OwnerName" [picture]="user?.picture"></nb-user>
+      <br>
+      <div class="description">
+       <strong> Eth {{project.TotalFuneded}}</strong> pledged
+       <br>
+       <strong> {{(project.TotalFuneded/ project.FundingGoal)*100}}%</strong>   funded
+       <br>
+       <strong> 11</strong>     days to go
+      </div>
+
+       <ngb-rating [(rate)]="heartRate" max=5>
+            <ng-template let-fill="fill">
+              <span class="star fill" [class.filled]="fill === 100">
+                <i class="ion-ios-heart" *ngIf="fill === 100"></i>
+                <i class="ion-ios-heart-outline" *ngIf="fill !== 100"></i>
+              </span>
+            </ng-template>
+          </ngb-rating>
+    
+    </div>
+  </nb-card-body>
+
+
+  <nb-card-footer>
+    <a href="https://akveo.github.io/react-native-ui-kitten" target="_blank">
+      <i class="ion-ios-world"></i>
+    </a>
+    <a href="https://itunes.apple.com/us/app/kitten-tricks/id1246143230" target="_blank">
+      <i class="ion-social-apple"></i>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.akveo.kittenTricks" target="_blank">
+      <i class="ion-social-android"></i>
+    </a>
+    <a href="https://github.com/akveo/react-native-ui-kitten" target="_blank">
+      <i class="ion-social-github"></i>
+    </a>
+  </nb-card-footer>
+</nb-card>
