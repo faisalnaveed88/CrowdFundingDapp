@@ -13,6 +13,7 @@ export class Project{
    RewardList =[];
    ProjectStory: Story;
    TotalFuneded:number;
+   ToalVoteCount:number;
   
 
 

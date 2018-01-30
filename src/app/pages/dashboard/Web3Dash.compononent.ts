@@ -289,6 +289,7 @@ this.web3.eth.getAccounts(function(error, accounts) {
         modelproject.Title = result[1];
         modelproject.Loucation = result[2];
         modelproject.TotalFuneded = localweb3.fromWei(result[3].toNumber(),"ether");
+        modelproject.ToalVoteCount = result[4].toNumber();
        
 
         return result
@@ -408,6 +409,35 @@ var projectId = parseInt("1");
 
 
    
+}
+
+VoteOnproject = async (_proID:number)=> {
+    var ProjectsContract  =  this.Projects;
+    var projectContractInstance ;
+
+    
+  this.web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+      
+      var account = accounts[0];
+    
+       ProjectsContract.deployed().then(function(instance) {
+        
+         projectContractInstance = instance;
+         return projectContractInstance.VoteProject(1, {from:account});
+
+       }).then(function(result) {
+       
+        return result
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+
+  })
+
+
 }
 
 TransferFunds = async (_account:any, _reward:Reward) => {

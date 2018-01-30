@@ -128,6 +128,11 @@ private startTimer() {
       console.log(account);
       
     }
+
+    VoteProject(id:number){
+       console.log("sending to blockchian")
+       this.web3component.VoteOnproject(1);
+    }
   
   
 }

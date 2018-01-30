@@ -1,3 +1,4 @@
+
 import { Project } from './../../../../model/Project';
 import { Component, OnDestroy, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
@@ -14,8 +15,9 @@ heartRate = 4;
 
   @Input()
    project: Project;
-
- 
+  @Output() 
+  VoteThisProject  = new EventEmitter<number>();
+   percentage:number;
 
   constructor(private themeService: NbThemeService) {
     
@@ -23,8 +25,17 @@ heartRate = 4;
       this.currentTheme = theme.name;
     });
   }
-
+  VoteProject(){
+    console.log("voting")
+    this.VoteThisProject.emit(1);
+    
+  }
+ngOnInit(){
+ this.percentage  = Math.trunc((this.project.TotalFuneded / this.project.FundingGoal)*100 );
+}
   ngOnDestroy() {
     this.themeSubscription.unsubscribe();
   }
+
+  
 }

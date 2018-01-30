@@ -18,27 +18,20 @@
       <div class="description">
        <strong> Eth {{project.TotalFuneded}}</strong> pledged
        <br>
-       <strong> {{(project.TotalFuneded/ project.FundingGoal)*100}}%</strong>   funded
+       <strong> {{percentage}}%</strong>   funded
        <br>
        <strong> 11</strong>     days to go
+       <br>
+       <strong> {{project.ToalVoteCount}}</strong>     Votes
       </div>
-
-       <ngb-rating [(rate)]="heartRate" max=5>
-            <ng-template let-fill="fill">
-              <span class="star fill" [class.filled]="fill === 100">
-                <i class="ion-ios-heart" *ngIf="fill === 100"></i>
-                <i class="ion-ios-heart-outline" *ngIf="fill !== 100"></i>
-              </span>
-            </ng-template>
-          </ngb-rating>
-    
+      
     </div>
   </nb-card-body>
 
 
   <nb-card-footer>
-    <a href="https://akveo.github.io/react-native-ui-kitten" target="_blank">
-      <i class="ion-ios-world"></i>
+    <a (click)="VoteProject()" >
+      <i class="ion-heart"></i>
     </a>
     <a href="https://itunes.apple.com/us/app/kitten-tricks/id1246143230" target="_blank">
       <i class="ion-social-apple"></i>

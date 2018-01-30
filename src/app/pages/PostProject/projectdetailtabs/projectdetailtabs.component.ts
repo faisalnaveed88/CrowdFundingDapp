@@ -203,7 +203,7 @@ const formData = new FormData();
     this.modelproject.ImageUrl = this.cookieService.get("IdeaImageUrl");
     this.modelproject.ShortDescription = this.cookieService.get("IdeaShortBlurb");
     this.modelproject.FundingDuration = this.cookieService.get("IdeaFundingDuration");
-    this.modelproject.FundingGoal = this.cookieService.get("IdeaFundingGoal");
+    this.modelproject.FundingGoal =  parseInt( this.cookieService.get("IdeaFundingGoal") );
 
     this.modelStory.VedioUrl = this.cookieService.get("IdeaVedioUrl");
     this.modelStory.Description = this.cookieService.get("IdeaStoryDescr");

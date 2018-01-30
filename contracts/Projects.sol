@@ -26,6 +26,7 @@ event Transfer(address indexed from, address indexed to, uint value);
     string Loucation;
     uint ProRewardCount;
     uint TotalGatherdAmount;
+    uint voteCount;
 
   }
   struct ProjectDetails {
@@ -58,6 +59,7 @@ event Transfer(address indexed from, address indexed to, uint value);
     newproject.Loucation = _loucation;
     newproject.ProRewardCount = 0 ;
     newproject.TotalGatherdAmount = 0 ether;
+    newproject.voteCount = 0 ;
 
     newDetails.FundingDuration = now + _fundingDuration * 1 minutes;
     newDetails.FundingGoal = _fundingGoal;
@@ -73,8 +75,8 @@ event Transfer(address indexed from, address indexed to, uint value);
 
   }
 
-  function getProject(uint _id) public returns(string, string, string, uint) {
-    return (projectList[_id].Catagory, projectList[_id].Title, projectList[_id].Loucation, projectList[_id].TotalGatherdAmount
+  function getProject(uint _id) public returns(string, string, string, uint,uint ) {
+    return (projectList[_id].Catagory, projectList[_id].Title, projectList[_id].Loucation, projectList[_id].TotalGatherdAmount, projectList[_id].voteCount
     );
   }
 
@@ -130,6 +132,12 @@ event Transfer(address indexed from, address indexed to, uint value);
    uint amount = msg.value;
     projectList[projectsCount].TotalGatherdAmount = projectList[projectsCount].TotalGatherdAmount +  amount ;
 
+
+  }
+
+  function VoteProject(uint proId){
+      projectList[projectsCount].voteCount =  projectList[projectsCount].voteCount +  1 ;
+      proId=  1 ;
 
   }
 
