@@ -5,4 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: 'search-fields.component.html',
 })
 export class SearchComponent {
+  str:string;
 }

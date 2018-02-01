@@ -1,6 +1,7 @@
+import { ProjectService } from './../../../@core/data/project.service';
 import { Component, Input, OnInit } from '@angular/core';
 
-import { NbMenuService, NbSidebarService } from '@nebular/theme';
+import {NbSearchService, NbMenuService,  NbSidebarService} from '@nebular/theme';
 import { UserService } from '../../../@core/data/users.service';
 import { AnalyticsService } from '../../../@core/utils/analytics.service';
 
@@ -15,22 +16,30 @@ export class HeaderComponent implements OnInit {
   @Input() position = 'normal';
 
   user: any;
- seachstring:string;
+ seachstring:string ="faisal";
   userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
 
   constructor(private sidebarService: NbSidebarService,
               private menuService: NbMenuService,
               private userService: UserService,
-              private analyticsService: AnalyticsService) {
+              private analyticsService: AnalyticsService,public search: NbSearchService,public  projectservice:ProjectService) {
               
               }
+              subscription:any;
+              items:any = {}
   ngOnInit() {
      
     this.userService.getUsers()
       .subscribe((users: any) => this.user = users.nick);
+      this.subscription = this.search.onSearchSubmit().subscribe(item => this.func(item))
      
   }
-
+  func(item: any){
+    console.log(item.term)
+     this.projectservice.searchProject(item.term);
+    
+    
+  }
   toggleSidebar(): boolean {
     this.sidebarService.toggle(true, 'menu-sidebar');
     return false;
@@ -46,7 +55,9 @@ export class HeaderComponent implements OnInit {
   
   }
 
-  startSearch() {
-    this.analyticsService.trackEvent('startSearch');
+  startSearch(str:any) {
+   // this.analyticsService.trackEvent('startSearch');
+
+   
   }
 }

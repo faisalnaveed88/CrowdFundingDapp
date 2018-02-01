@@ -53,14 +53,16 @@ imageurl  = "";
 
  }
    ngAfterViewInit(){
-
+  
      
 
    }
-  projectslist: any;
+  projectslist: Project[];
   name: String = "dfsdf";
   ngOnInit(){
    this._projectservice .getAllProjects().subscribe( (projects:any) => this.projectslist = projects);
+   this._projectservice.searchProject(" ");
+
    console.log(this.projectslist)
    this.startTimer();
   

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Reward } from './../../../model/Reward';
 import { CookieService } from 'ngx-cookie-service';
 import {FileHolder} from 'angular2-image-upload';
@@ -34,22 +35,20 @@ import {
 
 @ Injectable()
 
-export class ProjectService implements OnInit {
+export class ProjectService  {
 plegeReward:Reward;
 account:any;
 modelproject: Project = new Project(); /** * * * @ memberof ProjectDetailTabs */
 
 listRewards: Reward[] =[];
+allproject: Project[] = [];
 
 
 
-ngOnInit(){
-
-}
-  constructor(private http: Http, private cookieService: CookieService) {
+  constructor(private http: Http, private cookieService: CookieService ,public router: Router) {
 
 }
-
+  filterdlist: Project[]= [] ;
   listProject: Project[] =[
    {
      Catagory:"Technology",
@@ -312,13 +311,15 @@ ngOnInit(){
   ];
 
 
-
-  public getAllProjects(): Observable < any > {
+ serachstring:string = " ";
+  public getAllProjects(): Observable < Project[] > {
+   
     return Observable.of(this .listProject);
   }
 
   public AddProject(_pro:Project){
     this .listProject.push(_pro);
+    this.allproject.push(_pro);
   }
 
 
@@ -362,6 +363,39 @@ ngOnInit(){
 
  getAccountAddress():any{
    return this .account;
+ }
+
+ firstTime: boolean = true;
+ searchProject(str: string ){
+   this.serachstring = str;
+  
+   if ( this.firstTime){
+    for ( let i = 0 ; i < this.listProject.length; i++){
+      this.allproject.push(this.listProject[i]);
+    }
+    this.firstTime = false;
+
+   }
+   this.filterdlist = Object.assign([] , this.allproject).filter(
+     pro => pro.Title.toLowerCase().indexOf(str.toLowerCase()) > -1
+   )
+  
+
+    
+   this.listProject.splice(0,this.listProject.length);
+  for ( let i= 0 ; i <  this.filterdlist.length; i++){
+    this.listProject.push(this.filterdlist[i])
+  }
+   
+  
+
+console.log(this.filterdlist);
+
+
+
+  
+   
+   
  }
 
 
