@@ -2,7 +2,7 @@
 <div class="row" *ngIf="!showdetailproject">
 
 
-  <div class="col-md-4" *ngFor="let pro of projectslist" >
+  <div class="col-md-4" *ngFor="let pro of projectslist" [@flip]="!showdetailproject" >
 
  
 
@@ -13,7 +13,7 @@
 
 </div>
 
-<div> 
+<div [@flip]="showdetailproject"> 
 
 <ProjectDetailsInformationComponent *ngIf="showdetailproject" [project]="DetailprojectInstance" (TranferFundsTrigger)="TranferFunds($event)"></ProjectDetailsInformationComponent>
 </div>
